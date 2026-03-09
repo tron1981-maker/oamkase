@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCart } from "@/contexts/CartContext";
+import { useTranslation } from "@/lib/i18n";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Lang } from "@/contexts/LanguageContext";
 
-const langs = ["TH", "EN", "KR", "CN"] as const;
+const langs: Lang[] = ["TH", "EN", "KR", "CN"];
 
 const Navbar = () => {
   const { lang, setLang } = useLanguage();
+  const t = useTranslation(lang);
   const { itemCount, setIsOpen } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -18,16 +21,14 @@ const Navbar = () => {
           泉 IZUMI
         </a>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#concept" className="text-sm text-muted-foreground hover:text-primary transition-colors">Concept</a>
-          <a href="#courses" className="text-sm text-muted-foreground hover:text-primary transition-colors">Omakase</a>
-          <a href="#boutique" className="text-sm text-muted-foreground hover:text-primary transition-colors">Boutique</a>
-          <a href="#reviews" className="text-sm text-muted-foreground hover:text-primary transition-colors">Reviews</a>
+          <a href="#concept" className="text-sm text-muted-foreground hover:text-primary transition-colors font-sans">{t("nav.concept")}</a>
+          <a href="#courses" className="text-sm text-muted-foreground hover:text-primary transition-colors font-sans">{t("nav.courses")}</a>
+          <a href="#boutique" className="text-sm text-muted-foreground hover:text-primary transition-colors font-sans">{t("nav.boutique")}</a>
+          <a href="#reviews" className="text-sm text-muted-foreground hover:text-primary transition-colors font-sans">{t("nav.reviews")}</a>
         </div>
 
         <div className="flex items-center gap-4">
-          {/* Language toggle */}
           <div className="hidden md:flex items-center border border-border rounded-full overflow-hidden">
             {langs.map((l) => (
               <button
@@ -40,7 +41,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Cart */}
           <button onClick={() => setIsOpen(true)} className="relative p-2 text-muted-foreground hover:text-primary transition-colors">
             <ShoppingBag size={20} />
             {itemCount > 0 && (
@@ -50,14 +50,12 @@ const Navbar = () => {
             )}
           </button>
 
-          {/* Mobile menu toggle */}
           <button onClick={() => setMobileOpen(!mobileOpen)} className="md:hidden p-2 text-muted-foreground">
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -67,13 +65,13 @@ const Navbar = () => {
             className="md:hidden overflow-hidden bg-background border-b border-border"
           >
             <div className="flex flex-col px-4 py-4 gap-4">
-              <a href="#concept" onClick={() => setMobileOpen(false)} className="text-sm text-foreground">Concept</a>
-              <a href="#courses" onClick={() => setMobileOpen(false)} className="text-sm text-foreground">Omakase</a>
-              <a href="#boutique" onClick={() => setMobileOpen(false)} className="text-sm text-foreground">Boutique</a>
-              <a href="#reviews" onClick={() => setMobileOpen(false)} className="text-sm text-foreground">Reviews</a>
+              <a href="#concept" onClick={() => setMobileOpen(false)} className="text-sm text-foreground font-sans">{t("nav.concept")}</a>
+              <a href="#courses" onClick={() => setMobileOpen(false)} className="text-sm text-foreground font-sans">{t("nav.courses")}</a>
+              <a href="#boutique" onClick={() => setMobileOpen(false)} className="text-sm text-foreground font-sans">{t("nav.boutique")}</a>
+              <a href="#reviews" onClick={() => setMobileOpen(false)} className="text-sm text-foreground font-sans">{t("nav.reviews")}</a>
               <div className="flex items-center gap-2 pt-2 border-t border-border">
                 {langs.map((l) => (
-                  <button key={l} onClick={() => setLang(l)} className={`px-3 py-1 text-xs rounded-full ${lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground border border-border"}`}>
+                  <button key={l} onClick={() => setLang(l)} className={`px-3 py-1 text-xs rounded-full font-sans ${lang === l ? "bg-primary text-primary-foreground" : "text-muted-foreground border border-border"}`}>
                     {l}
                   </button>
                 ))}
