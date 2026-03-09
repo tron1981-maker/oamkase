@@ -29,11 +29,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-serif text-gradient-gold mb-6 leading-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 leading-tight"
         >
-          {t("hero.title1")}
+          <span className="text-gradient-gold">{t("hero.title1")}</span>
           <br />
-          {t("hero.title2")}
+          <span className="text-gradient-gold">{t("hero.title2").replace("🍣", "")}</span>
+          <span className="inline-block ml-2" role="img" aria-label="sushi">🍣</span>
         </motion.h1>
 
         <motion.p
