@@ -15,6 +15,8 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        gold: "bg-gradient-to-r from-hinoki to-gold text-primary-foreground font-semibold hover:shadow-lg hover:shadow-gold/20 transition-all duration-300",
+        "gold-outline": "border border-hinoki/50 text-hinoki hover:bg-hinoki/10 transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
