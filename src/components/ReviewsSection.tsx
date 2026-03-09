@@ -37,6 +37,14 @@ const reviewsByLang: Record<Lang, { name: string; handle: string; text: string; 
     { name: "Nina L.", handle: "@ninaeats", text: "带父母来庆祝纪念日，所有人都惊叹不已。大腹真的入口即化！🤤", rating: 5 },
     { name: "Beam P.", handle: "@beamtastebkk", text: "摆盘精美，味道绝佳。氛围非常私密。每个角度都值得拍照 ❤️", rating: 5 },
   ],
+  JP: [
+    { name: "プロイ K.", handle: "@ployeats", text: "トンローで最高のおまかせ！魚がとにかく新鮮で、東京で食べているみたい 🍣✨", rating: 5 },
+    { name: "マーク T.", handle: "@markfoodie", text: "熟成技術が別次元。一貫一貫にストーリーがある。大将との会話が最高！", rating: 5 },
+    { name: "ソム O.", handle: "@somfoodjournal", text: "このクオリティでこの価格は驚き。6,500バーツのコースは全て完璧。ウニが絶品。絶対また来ます！", rating: 5 },
+    { name: "ジェウォン", handle: "@jaewon_bkk", text: "日本のトップクラスの寿司と同レベル。バンコク最高のおまかせ！🇯🇵", rating: 5 },
+    { name: "ニーナ L.", handle: "@ninaeats", text: "両親の記念日に連れてきたら大感動。大トロが本当にとろける！🤤", rating: 5 },
+    { name: "ビーム P.", handle: "@beamtastebkk", text: "盛り付けも味も完璧。雰囲気がとても親密。どの角度でも映える ❤️", rating: 5 },
+  ],
 };
 
 const ReviewsSection = () => {

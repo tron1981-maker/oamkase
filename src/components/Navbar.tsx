@@ -6,7 +6,7 @@ import { ShoppingBag, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Lang } from "@/contexts/LanguageContext";
 
-const langs: Lang[] = ["TH", "EN", "KR", "CN"];
+const langs: Lang[] = ["TH", "EN", "JP", "KR", "CN"];
 
 const Navbar = () => {
   const { lang, setLang } = useLanguage();
