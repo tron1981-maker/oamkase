@@ -1,4 +1,4 @@
-export type Lang = "TH" | "EN" | "KR" | "CN";
+export type Lang = "TH" | "EN" | "KR" | "CN" | "JP";
 
 type Translations = Record<Lang, Record<string, string>>;
 
