@@ -1,0 +1,48 @@
+# Vite 프로젝트 전용 GitHub Pages 배포 설정
+name: Deploy Vite site to Pages
+
+on:
+  push:
+    branches: ["main"] # 코드가 main 브랜치에 올라올 때마다 실행
+  workflow_dispatch: # 수동으로도 실행 가능하게 설정
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 중요: Vite의 빌드 결과물은 반드시 dist 폴더에 생성됩니다.
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
